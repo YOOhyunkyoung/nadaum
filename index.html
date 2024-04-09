@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>하늘에서 이름이 내려오다</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #000;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  .name {
+    position: absolute;
+    white-space: nowrap;
+  }
+  @keyframes fall {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100vh); }
+  }
+</style>
+</head>
+<body>
+<script>
+  const names = ['김미나', '김은경', '박신애', '서영현', '송희영', '양수목', '유현경', '이순주', '임아미', '우정호'];
+  const colors = ['#FF5733', '#FFC300', '#DAF7A6', '#C70039', '#900C3F', '#581845', '#FFC0CB', '#00FFFF', '#00FF00', '#FFFF00'];
+
+  function createName() {
+    const name = document.createElement('div');
+    name.classList.add('name');
+    name.textContent = names[Math.floor(Math.random() * names.length)];
+    name.style.color = colors[Math.floor(Math.random() * colors.length)];
+    name.style.left = `${Math.random() * window.innerWidth}px`;
+    name.style.fontSize = `${Math.random() * (32 - 16) + 16}px`;
+    document.body.appendChild(name);
+
+    name.style.animation = `fall ${Math.random() * (5 - 2) + 2}s linear forwards`;
+    
+    name.addEventListener('animationend', () => {
+      document.body.removeChild(name);
+    });
+  }
+
+  setInterval(createName, 500);
+</script>
+</body>
+</html>
