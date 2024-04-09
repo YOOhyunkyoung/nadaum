@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이미지 갤러리</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            padding: 2rem;
+        }
+        .image-box {
+            width: calc(50% - 1rem);
+            overflow: hidden;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s ease-in-out;
+        }
+        img:hover {
+            transform: scale(1.05);
+        }
+        @media (max-width: 768px) {
+            .image-box {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="image-container">
+        <div class="image-box">
+            <img src="https://source.unsplash.com/random/600x400?nature" alt="Nature">
+        </div>
+        <div class="image-box">
+            <img src="https://source.unsplash.com/random/600x400?city" alt="City">
+        </div>
+    </div>
+</body>
+</html>
